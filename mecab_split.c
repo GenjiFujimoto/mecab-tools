@@ -11,7 +11,6 @@
     mecab_destroy(mecab); \
     return -1; }
 
-
 void wrap_word(char *output, const char *word)
 {
   sprintf(output, "<a href=\"bword:%s\">%s</a> ", word, word);
@@ -24,13 +23,10 @@ int main (int argc, char **argv)
   if (fgets(input, MAX_SENTENCE_LEN, stdin) == NULL)
       return 1;
 
-  mecab_model_t *model, *another_model;
+  mecab_model_t *model;
   mecab_t *mecab;
   mecab_lattice_t *lattice;
   const mecab_node_t *node;
-  const char *result;
-  int i;
-  size_t len;
 
   model = mecab_model_new(argc, argv);
   CHECK(model);
@@ -45,7 +41,6 @@ int main (int argc, char **argv)
   output[0] = '\0';
 
   char word_cur[MAX_WORD_LEN];
-  char word_next[MAX_WORD_LEN];
 
   char type_cur_first[MAX_TYPE_LEN];
   char type_cur_second[MAX_TYPE_LEN];
