@@ -6,8 +6,8 @@
 #define MAX_LEN 1024
 
 void hira_reading(char *input, char *output) {
-    mecab_t *mecab = mecab_new2(""); // MeCab initialisieren
-    const mecab_node_t *node = mecab_sparse_tonode(mecab, input); // Text analysieren
+    mecab_t *mecab = mecab_new2("");
+    const mecab_node_t *node = mecab_sparse_tonode(mecab, input);
 
     char kata_reading[64];
 
@@ -25,7 +25,7 @@ void hira_reading(char *input, char *output) {
 	strcat(output, (char*)reading);
     }
 
-    mecab_destroy(mecab); // MeCab aufräumen
+    mecab_destroy(mecab);
 }
 
 int main(int argc, char *argv[]) {
